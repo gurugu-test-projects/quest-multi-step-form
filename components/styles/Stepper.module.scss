@@ -1,13 +1,14 @@
 .stepper {
   height: 100vh;
   font-size: 14px;
-
-  display: flex;
-  flex: 0 1 400px;
+  flex: 0 1 260px;
 }
 
 .steps {
+  display: flex;
+  flex-direction: column;
   margin-top: 44px;
+  margin-left: 26px;
 }
 
 .step {
@@ -19,27 +20,27 @@
   &:last-child .stepLine {
     display: none;
   }
-}
 
-.stepName {
-  display: flex;
-  align-items: center;
-}
+  .stepContent {
+    display: flex;
+    align-items: center;
+  }
 
-.stepCircle {
-  background-color: var(--color-font-primary);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
+  .stepCircle {
+    background-color: var(--color-font-primary);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
 
-.stepLine {
-  background-color: var(--color-font-primary);
-  width: 1px;
-  height: 25px;
-  align-self: start;
-  transform: translateX(3px);
+  .stepLine {
+    background-color: var(--color-font-primary);
+    width: 1px;
+    height: 25px;
+    align-self: start;
+    transform: translateX(3px);
+  }
 }
 
 .visited {
@@ -59,5 +60,37 @@
   & .stepCircle,
   & .stepLine {
     background-color: var(--color-font-primary);
+  }
+}
+
+@media (max-width: 600px) {
+  .stepper {
+    flex: 0 0 100px;
+  }
+
+  .steps {
+    margin-top: 72px;
+    margin-left: 0;
+    flex-direction: row;
+  }
+
+  .step {
+    flex-direction: row;
+    justify-content: center;
+
+    .stepCircle {
+      margin-right: 0;
+    }
+
+    .stepLine {
+      width: 40px;
+      height: 1px;
+      transform: translateX(0) translateY(3px);
+      margin: 0 4px;
+    }
+
+    .stepName {
+      display: none;
+    }
   }
 }

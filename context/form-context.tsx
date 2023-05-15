@@ -5,7 +5,9 @@ interface IFormContext {
   appState: IForm;
   setAppState: React.Dispatch<React.SetStateAction<IForm>>;
   visitedSteps: Set<Step>;
-  setVisitedSteps: React.Dispatch<React.SetStateAction<Set<Step>>>;
+  addVisitedStep: (step: Step) => void;
+  removeVisitedStep: (step: Step) => void;
+  clearVisitedSteps: () => void;
 }
 
 const AppStateContext = React.createContext<IFormContext>({} as IFormContext);
@@ -16,11 +18,36 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     productLaunch: "preProduct",
     projectCategory: ProjectCategory.NFT,
   });
-  const [visitedSteps, setVisitedSteps] = React.useState<Set<Step>>(new Set());
+  const [visitedSteps, setVisitedSteps] = React.useState<Set<Step> | undefined>(
+    new Set()
+  );
+
+  const addVisitedStep = (step: Step) => {
+    const updatedSet = new Set(visitedSteps);
+    updatedSet.add(step);
+    setVisitedSteps(updatedSet);
+  };
+
+  const removeVisitedStep = (step: Step) => {
+    const updatedSet = new Set(visitedSteps);
+    updatedSet.delete(step);
+    setVisitedSteps(updatedSet);
+  };
+
+  const clearVisitedSteps = () => {
+    setVisitedSteps(new Set());
+  };
 
   return (
     <AppStateContext.Provider
-      value={{ appState, setAppState, visitedSteps, setVisitedSteps }}
+      value={{
+        appState,
+        setAppState,
+        visitedSteps,
+        addVisitedStep,
+        removeVisitedStep,
+        clearVisitedSteps,
+      }}
     >
       {children}
     </AppStateContext.Provider>

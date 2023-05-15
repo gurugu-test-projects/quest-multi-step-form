@@ -26,11 +26,11 @@ function ProjectDetails({
   const { handleSubmit, register, getValues } = useForm<IForm>({
     defaultValues: formData,
   });
-  const { visitedSteps, setVisitedSteps } = useAppState();
+  const { addVisitedStep } = useAppState();
 
   const saveData: SubmitHandler<IForm> = (data) => {
     handleFormData({ ...formData, ...data });
-    setVisitedSteps(visitedSteps.add(Step.ProjectDetails));
+    addVisitedStep(Step.ProjectDetails);
     handleStepChange(Step.CreateProject);
   };
 

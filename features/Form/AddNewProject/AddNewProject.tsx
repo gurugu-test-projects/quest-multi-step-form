@@ -31,11 +31,15 @@ function AddNewProject({ handleStepChange, formData, handleFormData }: IProps) {
   } = useForm<IForm>({
     defaultValues: formData,
   });
-  const { visitedSteps, setVisitedSteps } = useAppState();
+  const { addVisitedStep, clearVisitedSteps } = useAppState();
+
+  React.useEffect(() => {
+    clearVisitedSteps();
+  }, []);
 
   const saveData: SubmitHandler<IForm> = (data) => {
     handleFormData({ ...formData, ...data });
-    setVisitedSteps(visitedSteps.add(Step.AddNewProject));
+    addVisitedStep(Step.AddNewProject);
     handleStepChange(Step.ProjectDetails);
   };
 

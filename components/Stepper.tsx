@@ -37,9 +37,9 @@ const Stepper = ({ step }: IProps) => {
       <ul className={styles.steps}>
         {steps.map(({ name }) => (
           <li key={name} className={`${styles.step} ${getStepClass(name)}`}>
-            <div className={styles.stepName}>
+            <div className={styles.stepContent}>
               <div className={`${styles.stepCircle}`}></div>
-              <div>{name}</div>
+              <div className={`${styles.stepName}`}>{name}</div>
             </div>
             <div className={`${styles.stepLine}`} />
           </li>

@@ -17,16 +17,17 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
     defaultValues: formData,
   });
   const router = useRouter();
-  const { setAppState, visitedSteps, setVisitedSteps } = useAppState();
+  const { setAppState, addVisitedStep, removeVisitedStep } = useAppState();
 
   const saveData: SubmitHandler<IForm> = (data) => {
     setAppState({ ...formData, ...data });
-    setVisitedSteps(visitedSteps.add(Step.CreateProject));
+    addVisitedStep(Step.CreateProject);
     router.push("/summary");
   };
 
   const previousStep = () => {
     handleFormData(getValues());
+    removeVisitedStep(Step.ProjectDetails);
     handleStepChange(Step.ProjectDetails);
   };
 
