@@ -3,6 +3,10 @@
   font-size: 14px;
   flex: 0 1 260px;
   border-right: 1px solid rgba(#fff, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .steps {
@@ -67,7 +71,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   .stepper {
     flex: 0 0 100px;
     border: 0;
@@ -97,5 +101,9 @@
     .stepName {
       display: none;
     }
+  }
+
+  .stepperImg {
+    display: none;
   }
 }

@@ -1,5 +1,7 @@
 import React from "react";
+import Image from "next/image";
 
+import rainbow from "../images/rainbow.png";
 import styles from "./styles/Stepper.module.scss";
 import { Step } from "../utils/types";
 import { useAppState } from "../context/form-context";
@@ -46,6 +48,13 @@ function Stepper({ step }: IProps) {
           </li>
         ))}
       </ul>
+      <Image
+        className={styles.stepperImg}
+        src={rainbow}
+        height={160}
+        width={260}
+        alt="Rainbow"
+      />
     </nav>
   );
 }
