@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import styles from "../styles/Form.module.scss";
 import { Step, IForm } from "../../../utils/types";
-import { Field } from "../../../components/Field";
 import { useAppState } from "../../../context/form-context";
 
 const goals = [

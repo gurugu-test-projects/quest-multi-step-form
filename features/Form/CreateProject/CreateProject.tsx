@@ -16,7 +16,7 @@ interface IProps {
 }
 
 function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
-  const { handleSubmit, register, getValues } = useForm<IForm>({
+  const { handleSubmit, register, getValues, setValue } = useForm<IForm>({
     defaultValues: formData,
   });
   const router = useRouter();
@@ -34,6 +34,19 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
     handleStepChange(Step.ProjectDetails);
   };
 
+  const increaseWorkers = () => {
+    const workers = getValues("workers");
+    setValue("workers", Number(workers) + 1);
+  };
+
+  const decreaseWorkers = () => {
+    const workers = getValues("workers");
+
+    if (workers > 0) {
+      setValue("workers", workers - 1);
+    }
+  };
+
   return (
     <form
       className={styles.form}
@@ -47,7 +60,7 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
           <div id="workers" className={styles.workerInputContainer}>
             <div
               className={`${styles.button} ${styles.btnSecondary} ${styles.btnWorkers}`}
-              onClick={() => console.log("minus")}
+              onClick={decreaseWorkers}
             >
               -
             </div>
@@ -59,7 +72,7 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
             />
             <div
               className={`${styles.button} ${styles.btnSecondary} ${styles.btnWorkers}`}
-              onClick={() => console.log("minus")}
+              onClick={increaseWorkers}
             >
               +
             </div>
