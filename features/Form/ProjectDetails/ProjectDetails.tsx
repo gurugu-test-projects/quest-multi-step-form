@@ -51,8 +51,14 @@ function ProjectDetails({
           </Field>
         ))}
       </fieldset>
-      <button onClick={previousStep}>Back</button>
-      <button>Continue</button>
+      <div className={styles.btnContainer}>
+        <button className={styles.btnSecondary} onClick={previousStep}>
+          Back
+        </button>
+        <button className={styles.btnPrimary} type="submit">
+          Continue
+        </button>
+      </div>
     </form>
   );
 }

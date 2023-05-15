@@ -75,8 +75,14 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
           <input type="text" id="contactEmail" {...register("contactEmail")} />
         </Field>
       </fieldset>
-      <button onClick={previousStep}>Back</button>
-      <button type="submit">Create Project</button>
+      <div className={styles.btnContainer}>
+        <button className={styles.btnSecondary} onClick={previousStep}>
+          Back
+        </button>
+        <button className={styles.btnPrimary} type="submit">
+          Create Project
+        </button>
+      </div>
     </form>
   );
 }

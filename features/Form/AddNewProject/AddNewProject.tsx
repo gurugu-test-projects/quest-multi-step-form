@@ -67,20 +67,29 @@ function AddNewProject({ handleStepChange, formData, handleFormData }: IProps) {
           </div>
         </Field>
         <label>Project Category (it cannot be changed after creation)</label>
-        <div>
+        <div className={styles.cardBtnContainer}>
           {projectCategory.map((category) => (
-            <Field key={category} label={category}>
+            <label
+              key={category}
+              htmlFor={category}
+              className={styles.cardRadioBtn}
+            >
+              {category}
               <input
-                id="projectCategory"
+                id={category}
                 type="radio"
-                {...register("projectCategory")}
                 value={category}
+                {...register("projectCategory")}
               />
-            </Field>
+            </label>
           ))}
         </div>
       </fieldset>
-      <button type="submit">Add Project</button>
+      <div className={styles.btnContainer}>
+        <button className={styles.btnPrimary} type="submit">
+          Add Project
+        </button>
+      </div>
     </form>
   );
 }

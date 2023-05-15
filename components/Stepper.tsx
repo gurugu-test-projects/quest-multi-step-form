@@ -20,8 +20,9 @@ interface IProps {
   step: Step;
 }
 
-const Stepper = ({ step }: IProps) => {
+function Stepper({ step }: IProps) {
   const { visitedSteps } = useAppState();
+
   const isSelected = (s: Step) => {
     return s === step ? styles.selected : "";
   };
@@ -47,6 +48,6 @@ const Stepper = ({ step }: IProps) => {
       </ul>
     </nav>
   );
-};
+}
 
 export { Stepper };

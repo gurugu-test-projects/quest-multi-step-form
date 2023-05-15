@@ -16,11 +16,7 @@ function Field({ label, children, htmlFor, error, ...props }: IProps) {
 
   return (
     <div {...props}>
-      {label && (
-        <label style={{ margin: "10px 0 5px" }} htmlFor={id}>
-          {label}
-        </label>
-      )}
+      {label && <label htmlFor={id}>{label}</label>}
       {children}
       {!!error && <ErrorMessage error={{ message: error.message }} />}
     </div>

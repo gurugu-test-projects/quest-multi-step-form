@@ -17,15 +17,17 @@
     font-weight: 500;
   }
 
+  & fieldset > label,
+  .fieldContainer label {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 28px 0 5px;
+  }
+
   .fieldContainer {
     display: flex;
     flex-direction: column;
-    margin-bottom: 29px;
-
-    label {
-      font-size: 16px;
-      font-weight: 400;
-    }
 
     input {
       width: 100%;
@@ -38,27 +40,95 @@
       border: 1px solid rgba(#fff, 0.1);
       border-radius: 10px;
     }
+  }
+}
 
-    & .urlInput {
-      position: relative;
+.fieldContainer .urlInput {
+  position: relative;
 
-      span {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 16px;
-        opacity: 0.2;
-      }
+  span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    opacity: 0.2;
+  }
 
-      input {
-        padding-left: 129px;
-      }
+  input {
+    padding-left: 129px;
+  }
+}
+
+.cardBtnContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .cardRadioBtn {
+    padding: 6px 12px;
+    background-color: rgba(250, 250, 250, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    &:has(input[type="radio"]:checked) {
+      color: var(--color-font-secondary);
+      background-color: rgba(33, 122, 255, 0.1);
     }
   }
 }
 
-@media (max-width: 600px) {
+.btnContainer {
+  display: flex;
+  gap: 28px;
+  margin-top: 28px;
+
+  button {
+    padding: 13px 24px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    cursor: pointer;
+
+    &.btnPrimary {
+      width: 328px;
+      background-color: var(--color-font-secondary);
+      color: var(--color-main-bg);
+    }
+
+    &.btnSecondary {
+      width: 120px;
+      background-color: rgba(250, 250, 250, 0.1);
+      color: var(--color-font-primary);
+    }
+  }
+}
+
+@media (max-width: 750px) {
   .form {
     margin: 0;
+  }
+
+  .btnContainer {
+    gap: 16px;
+    margin-top: 24px;
+
+    button {
+      &.btnPrimary {
+        width: 100%;
+      }
+
+      &.btnSecondary {
+        width: 100%;
+      }
+    }
   }
 }
