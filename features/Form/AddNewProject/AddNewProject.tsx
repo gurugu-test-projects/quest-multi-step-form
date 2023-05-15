@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
+import styles from "../styles/Form.module.scss";
 import { Step, IForm } from "../../../utils/types";
 import { Field } from "../../../components/Field";
 import { useAppState } from "../../../context/form-context";
@@ -44,34 +45,36 @@ function AddNewProject({ handleStepChange, formData, handleFormData }: IProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(saveData)}>
-      <h2>Add New Project</h2>
-      <Field
-        label="Project Name (it can be changed later)"
-        error={errors.projectName}
-      >
-        <input id="projectName" {...register("projectName")} />
-      </Field>
-      <Field
-        label="Project URL (it cannot be changed after creation)"
-        error={errors.projectUrl}
-      >
-        <input id="projectUrl" {...register("projectUrl")} />
-      </Field>
-      <label>Project Category (it cannot be changed after creation)</label>
+    <form className={styles.form} onSubmit={handleSubmit(saveData)}>
+      <h1>To Create Quest you need firstly create Project</h1>
       <fieldset>
-        {projectCategory.map((category) => (
-          <Field key={category} label={category}>
-            <input
-              id="projectCategory"
-              type="radio"
-              {...register("projectCategory")}
-              value={category}
-            />
-          </Field>
-        ))}
+        <legend>Add New Project</legend>
+        <Field
+          label="Project Name (it can be changed later)"
+          error={errors.projectName}
+        >
+          <input id="projectName" {...register("projectName")} />
+        </Field>
+        <Field
+          label="Project URL (it cannot be changed after creation)"
+          error={errors.projectUrl}
+        >
+          <input id="projectUrl" {...register("projectUrl")} />
+        </Field>
+        <label>Project Category (it cannot be changed after creation)</label>
+        <div>
+          {projectCategory.map((category) => (
+            <Field key={category} label={category}>
+              <input
+                id="projectCategory"
+                type="radio"
+                {...register("projectCategory")}
+                value={category}
+              />
+            </Field>
+          ))}
+        </div>
       </fieldset>
-
       <button type="submit">Add Project</button>
     </form>
   );

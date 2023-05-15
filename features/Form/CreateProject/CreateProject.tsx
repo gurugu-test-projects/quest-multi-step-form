@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
 
+import styles from "../styles/Form.module.scss";
 import { Step, IForm } from "../../../utils/types";
 import { Field } from "../../../components/Field";
 import { useAppState } from "../../../context/form-context";
@@ -32,8 +33,8 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(saveData)}>
-      <h2>Create Project</h2>
+    <form className={styles.form} onSubmit={handleSubmit(saveData)}>
+      <h1>Create Project</h1>
       <fieldset>
         <legend>How many full-time workers on the project?</legend>
         <Field>

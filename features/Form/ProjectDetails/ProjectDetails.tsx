@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
+import styles from "../styles/Form.module.scss";
 import { Step, IForm } from "../../../utils/types";
 import { Field } from "../../../components/Field";
 import { useAppState } from "../../../context/form-context";
@@ -40,8 +41,8 @@ function ProjectDetails({
   };
 
   return (
-    <form onSubmit={handleSubmit(saveData)}>
-      <h2>Project Details</h2>
+    <form className={styles.form} onSubmit={handleSubmit(saveData)}>
+      <h1>Project Details</h1>
       <fieldset>
         <legend>What is your main goal with AlphaQuest?</legend>
         {goals.map((goal) => (
