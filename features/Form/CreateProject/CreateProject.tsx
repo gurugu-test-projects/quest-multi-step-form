@@ -7,6 +7,8 @@ import { Step, IForm } from "../../../utils/types";
 import { Field } from "../../../components/Field";
 import { useAppState } from "../../../context/form-context";
 
+const productLaunch = ["Pre Product", "Post Product"];
+
 interface IProps {
   handleStepChange: (step: Step) => void;
   formData: {};
@@ -33,53 +35,69 @@ function CreateProject({ handleStepChange, formData, handleFormData }: IProps) {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(saveData)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(saveData)}
+      autoComplete="off"
+    >
       <h1>Create Project</h1>
       <fieldset>
         <legend>How many full-time workers on the project?</legend>
-        <Field>
-          <div id="workers">
-            <div onClick={() => console.log("minus")}>-</div>
+        <Field className={styles.fieldContainer}>
+          <div id="workers" className={styles.workerInputContainer}>
+            <div
+              className={`${styles.button} ${styles.btnSecondary} ${styles.btnWorkers}`}
+              onClick={() => console.log("minus")}
+            >
+              -
+            </div>
             <input
               type="number"
               {...register("workers")}
               placeholder="0"
               min="0"
             />
-            <div onClick={() => console.log("minus")}>+</div>
+            <div
+              className={`${styles.button} ${styles.btnSecondary} ${styles.btnWorkers}`}
+              onClick={() => console.log("minus")}
+            >
+              +
+            </div>
           </div>
         </Field>
       </fieldset>
       <fieldset>
         <legend>Are you pre or post product launch?</legend>
-        <Field label="Pre Product">
-          <input
-            id="preProduct"
-            type="radio"
-            {...register("productLaunch")}
-            value="preProduct"
-          />
-        </Field>
-        <Field label="Post Product">
-          <input
-            id="postProduct"
-            type="radio"
-            {...register("productLaunch")}
-            value="postProduct"
-          />
-        </Field>
+        {productLaunch.map((launch) => (
+          <div key={launch} className={styles.radioBtnContainer}>
+            <input
+              className={styles.radioBtn}
+              id={launch}
+              type="radio"
+              value={launch}
+              {...register("productLaunch")}
+            />
+            <label htmlFor={launch}>{launch}</label>
+          </div>
+        ))}
       </fieldset>
       <fieldset>
         <legend>Contact Email</legend>
-        <Field>
+        <Field className={styles.fieldContainer}>
           <input type="text" id="contactEmail" {...register("contactEmail")} />
         </Field>
       </fieldset>
       <div className={styles.btnContainer}>
-        <button className={styles.btnSecondary} onClick={previousStep}>
+        <button
+          className={`${styles.button} ${styles.btnSecondary}`}
+          onClick={previousStep}
+        >
           Back
         </button>
-        <button className={styles.btnPrimary} type="submit">
+        <button
+          className={`${styles.button} ${styles.btnPrimary}`}
+          type="submit"
+        >
           Create Project
         </button>
       </div>

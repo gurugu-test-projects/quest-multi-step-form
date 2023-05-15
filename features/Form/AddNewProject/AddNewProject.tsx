@@ -45,7 +45,11 @@ function AddNewProject({ handleStepChange, formData, handleFormData }: IProps) {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(saveData)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(saveData)}
+      autoComplete="off"
+    >
       <h1>To Create Quest you need firstly create Project</h1>
       <fieldset>
         <legend>Add New Project</legend>
@@ -86,7 +90,10 @@ function AddNewProject({ handleStepChange, formData, handleFormData }: IProps) {
         </div>
       </fieldset>
       <div className={styles.btnContainer}>
-        <button className={styles.btnPrimary} type="submit">
+        <button
+          className={`${styles.button} ${styles.btnPrimary}`}
+          type="submit"
+        >
           Add Project
         </button>
       </div>

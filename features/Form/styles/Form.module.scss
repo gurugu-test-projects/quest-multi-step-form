@@ -10,12 +10,14 @@
 
   fieldset {
     border: 0;
+    margin-bottom: 28px;
   }
 
   legend {
     font-size: 32px;
     font-weight: 500;
     line-height: 38px;
+    margin-bottom: 16px;
   }
 
   & fieldset > label,
@@ -35,9 +37,9 @@
       font-size: 16px;
       font-weight: 400;
 
-      color: var(--color-font-primary);
+      color: var(--color-font-primary) !important;
       padding: 12px 16px;
-      background-color: var(--color-main-bg);
+      background-color: var(--color-main-bg) !important;
       border: 1px solid rgba(#fff, 0.1);
       border-radius: 10px;
     }
@@ -60,37 +62,52 @@
   }
 }
 
-.cardBtnContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.form {
+  .cardBtnContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 
-  .cardRadioBtn {
-    padding: 6px 12px;
-    background-color: rgba(250, 250, 250, 0.1);
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
+    .cardRadioBtn {
+      padding: 6px 12px;
+      background-color: rgba(250, 250, 250, 0.1);
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
 
-    input[type="radio"] {
-      display: none;
+      input[type="radio"] {
+        display: none;
+      }
+
+      &:has(input[type="radio"]:checked) {
+        color: var(--color-font-secondary);
+        background-color: rgba(33, 122, 255, 0.1);
+      }
     }
+  }
 
-    &:has(input[type="radio"]:checked) {
-      color: var(--color-font-secondary);
-      background-color: rgba(33, 122, 255, 0.1);
+  .btnContainer {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .workerInputContainer {
+    display: flex;
+    gap: 16px;
+
+    input {
+      text-align: center;
+      width: 160px;
     }
   }
 }
 
-.btnContainer {
-  display: flex;
-  gap: 28px;
-  margin-top: 28px;
-
-  button {
+.btnContainer,
+.workerInputContainer {
+  .button {
     padding: 13px 24px;
     border: 0;
     border-radius: 10px;
@@ -98,6 +115,11 @@
     font-weight: 500;
     line-height: 22px;
     cursor: pointer;
+
+    &.btnSecondary.btnWorkers {
+      width: 48px;
+      padding: 13px 20px;
+    }
 
     &.btnPrimary {
       width: 328px;
@@ -143,26 +165,34 @@
   }
 
   &:not(:last-child) {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
   }
 }
 
 @media (max-width: 750px) {
   .form {
     margin: 0 5%;
-  }
 
-  .btnContainer {
-    gap: 16px;
-    margin-top: 24px;
+    .btnContainer {
+      gap: 16px;
+      margin-top: 24px;
 
-    button {
-      &.btnPrimary {
-        width: 100%;
+      .button {
+        padding: 13px 20px;
+
+        &.btnPrimary {
+          width: 100%;
+        }
+
+        &.btnSecondary {
+          width: 100%;
+        }
       }
+    }
 
-      &.btnSecondary {
-        width: 100%;
+    .workerInputContainer {
+      input {
+        flex-grow: 1;
       }
     }
   }

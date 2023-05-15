@@ -15,7 +15,7 @@ const AppStateContext = React.createContext<IFormContext>({} as IFormContext);
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [appState, setAppState] = React.useState<IForm>({
     goal: "Understand My Members",
-    productLaunch: "preProduct",
+    productLaunch: "Pre Product",
     projectCategory: ProjectCategory.NFT,
   });
   const [visitedSteps, setVisitedSteps] = React.useState<Set<Step> | undefined>(

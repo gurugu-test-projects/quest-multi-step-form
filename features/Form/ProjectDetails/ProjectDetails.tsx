@@ -41,7 +41,11 @@ function ProjectDetails({
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(saveData)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(saveData)}
+      autoComplete="off"
+    >
       <h1>Project Details</h1>
       <fieldset>
         <legend>What is your main goal with AlphaQuest?</legend>
@@ -61,10 +65,16 @@ function ProjectDetails({
         </div>
       </fieldset>
       <div className={styles.btnContainer}>
-        <button className={styles.btnSecondary} onClick={previousStep}>
+        <button
+          className={`${styles.button} ${styles.btnSecondary}`}
+          onClick={previousStep}
+        >
           Back
         </button>
-        <button className={styles.btnPrimary} type="submit">
+        <button
+          className={`${styles.button} ${styles.btnPrimary}`}
+          type="submit"
+        >
           Continue
         </button>
       </div>
