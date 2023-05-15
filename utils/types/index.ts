@@ -21,7 +21,7 @@ interface IForm {
   projectUrl?: string;
   projectCategory: ProjectCategory;
   goal: string;
-  workers?: number;
+  workers: number;
   productLaunch: string;
   contactEmail?: string;
 }

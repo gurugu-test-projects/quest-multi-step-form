@@ -17,6 +17,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     goal: "Understand My Members",
     productLaunch: "Pre Product",
     projectCategory: ProjectCategory.NFT,
+    workers: 0,
   });
   const [visitedSteps, setVisitedSteps] = React.useState<Set<Step> | undefined>(
     new Set()
