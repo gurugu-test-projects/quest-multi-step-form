@@ -1,6 +1,6 @@
 .form {
-  margin-top: 100px;
-  margin-left: 60px;
+  flex: 0 1 680px;
+  margin: 100px 60px;
 
   h1 {
     font-size: 20px;
@@ -15,5 +15,50 @@
   legend {
     font-size: 32px;
     font-weight: 500;
+  }
+
+  .fieldContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 29px;
+
+    label {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    input {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 400;
+
+      color: var(--color-font-primary);
+      padding: 12px 16px;
+      background-color: var(--color-main-bg);
+      border: 1px solid rgba(#fff, 0.1);
+      border-radius: 10px;
+    }
+
+    & .urlInput {
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 16px;
+        opacity: 0.2;
+      }
+
+      input {
+        padding-left: 129px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .form {
+    margin: 0;
   }
 }

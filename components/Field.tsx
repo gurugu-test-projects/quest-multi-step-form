@@ -8,13 +8,14 @@ interface IProps {
   children: React.ReactNode;
   htmlFor?: string;
   error?: FieldError;
+  className?: string;
 }
 
-function Field({ label, children, htmlFor, error }: IProps) {
+function Field({ label, children, htmlFor, error, ...props }: IProps) {
   const id = htmlFor || getChildId(children);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div {...props}>
       {label && (
         <label style={{ margin: "10px 0 5px" }} htmlFor={id}>
           {label}

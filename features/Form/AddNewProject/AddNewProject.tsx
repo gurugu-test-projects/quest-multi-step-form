@@ -52,14 +52,19 @@ function AddNewProject({ handleStepChange, formData, handleFormData }: IProps) {
         <Field
           label="Project Name (it can be changed later)"
           error={errors.projectName}
+          className={styles.fieldContainer}
         >
           <input id="projectName" {...register("projectName")} />
         </Field>
         <Field
           label="Project URL (it cannot be changed after creation)"
           error={errors.projectUrl}
+          className={styles.fieldContainer}
         >
-          <input id="projectUrl" {...register("projectUrl")} />
+          <div className={styles.urlInput} id="projectUrl">
+            <span>Alphaguilty.io/</span>
+            <input {...register("projectUrl")} />
+          </div>
         </Field>
         <label>Project Category (it cannot be changed after creation)</label>
         <div>
