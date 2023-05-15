@@ -45,11 +45,20 @@ function ProjectDetails({
       <h1>Project Details</h1>
       <fieldset>
         <legend>What is your main goal with AlphaQuest?</legend>
-        {goals.map((goal) => (
-          <Field label={goal} key={goal}>
-            <input id={goal} type="radio" {...register("goal")} value={goal} />
-          </Field>
-        ))}
+        <div style={{ marginTop: "24px" }}>
+          {goals.map((goal) => (
+            <div key={goal} className={styles.radioBtnContainer}>
+              <input
+                className={styles.radioBtn}
+                id={goal}
+                type="radio"
+                value={goal}
+                {...register("goal")}
+              />
+              <label htmlFor={goal}>{goal}</label>
+            </div>
+          ))}
+        </div>
       </fieldset>
       <div className={styles.btnContainer}>
         <button className={styles.btnSecondary} onClick={previousStep}>
