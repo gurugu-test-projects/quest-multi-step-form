@@ -57,9 +57,12 @@
   opacity: 1;
   color: var(--color-font-primary);
 
-  & .stepCircle,
-  & .stepLine {
+  & .stepCircle {
     background-color: var(--color-font-primary);
+  }
+
+  & .stepLine {
+    opacity: 0.2;
   }
 }
 
